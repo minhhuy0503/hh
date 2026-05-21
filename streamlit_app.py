@@ -1,9 +1,21 @@
+import os
+import sys
+import subprocess
+
+# Ép hệ thống phải tự cài unidecode và openpyxl ngay khi vừa mở web lên
+try:
+    import unidecode
+    import openpyxl
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "unidecode", "openpyxl"])
+    import unidecode
+    import openpyxl
+
 import streamlit as st
 import pandas as pd
-import unidecode
 import re
 import io
-#
+
 # Cấu hình trang web giao diện điện thoại cho đẹp
 st.set_page_config(page_title="Bộ Lọc Hồ Sơ SASPA", page_icon="📊", layout="centered")
 
